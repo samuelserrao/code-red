@@ -58,3 +58,15 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Hide default browser password reveal and clear icons */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+}

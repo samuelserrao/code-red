@@ -16,6 +16,7 @@ interface Thread {
   time: string;
   unread: boolean;
   messages: Message[];
+  avatar: string;
 }
 
 const INITIAL_THREADS: Thread[] = [
@@ -25,6 +26,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'Sounds good! See you then.',
     time: 'Now',
     unread: false,
+    avatar: 'https://i.pravatar.cc/150?u=Hazil',
     messages: [
       { id: 1, text: 'Hey, are we still on for the integration test at noon?', isSender: false },
       { id: 2, text: 'Yes absolutely. The Phase 3 App Expansion is fully deployed!', isSender: true },
@@ -38,6 +40,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'Haha true 🤣',
     time: '10:42 AM',
     unread: true,
+    avatar: 'https://i.pravatar.cc/150?u=Sachin',
     messages: [
       { id: 1, text: 'Did you see the new update?', isSender: false },
       { id: 2, text: 'Yes, looking great!', isSender: true },
@@ -50,6 +53,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'Can you send me the files?',
     time: 'Yesterday',
     unread: false,
+    avatar: 'https://i.pravatar.cc/150?u=Chaitesh',
     messages: [
       { id: 1, text: 'Can you send me the files?', isSender: false },
     ]
@@ -57,9 +61,10 @@ const INITIAL_THREADS: Thread[] = [
   {
     id: 3,
     name: 'Nisarga',
-    preview: 'Meeting at 5',
+    preview: 'Got it. See you then!',
     time: '12:00',
     unread: false,
+    avatar: 'https://i.pravatar.cc/150?u=Nisarga',
     messages: [
       { id: 1, text: 'Meeting is moved to 3:30 PM today.', isSender: false },
       { id: 2, text: 'Got it. See you then!', isSender: true },
@@ -71,12 +76,13 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'FU*K you',
     time: '12:45',
     unread: false,
+    avatar: 'https://i.pravatar.cc/150?u=Aashritha2',
     messages: [
       { id: 1, text: 'Are you free at 5:00?', isSender: false },
       { id: 2, text: 'Yes ??', isSender: true },
       { id: 3, text: 'What now', isSender: true },
       { id: 4, text: 'We have nothing to talk', isSender: true },
-      { id: 4, text: 'FU*K you', isSender: true },
+      { id: 5, text: 'FU*K you', isSender: true },
     ]
   },
   {
@@ -85,6 +91,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'Ohh get the report for meeting ',
     time: '4:30',
     unread: false,
+    avatar: 'https://i.pravatar.cc/150?u=Surakshith',
     messages: [
       { id: 1, text: 'What are you doing?', isSender: true },
       { id: 2, text: 'I am working on my project.', isSender: false },
@@ -97,12 +104,13 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'Kkk seeya',
     time: 'Today',
     unread: false,
+    avatar: 'https://i.pravatar.cc/150?u=Moksha3',
     messages: [
       { id: 1, text: 'hii my love', isSender: true },
       { id: 2, text: 'Should i come to your place at 3:00pm?', isSender: true },
       { id: 3, text: 'Hiii babe.', isSender: false },
-      { id: 3, text: 'My mumma is at home , ill call you after she leaves.', isSender: false },
-      { id: 3, text: 'Kkk seeya', isSender: false },
+      { id: 4, text: 'My mumma is at home , ill call you after she leaves.', isSender: false },
+      { id: 5, text: 'Kkk seeya', isSender: false },
     ]
   },
   {
@@ -111,6 +119,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'Ohh get the report for meeting ',
     time: '4:30',
     unread: false,
+    avatar: 'https://i.pravatar.cc/150?u=Doctor4',
     messages: [
       { id: 1, text: 'Your report has come..', isSender: false },
       { id: 2, text: 'its confirmed that you are having Heart disease..', isSender: false },
@@ -169,7 +178,9 @@ export default function Messages() {
               onClick={() => selectThread(thread.id)}
               className={`flex items-center gap-3 px-4 py-3 border-b border-gray-100 cursor-pointer hover:bg-gray-200/50 transition-colors ${thread.id === activeThreadId ? 'bg-blue-500 text-white hover:bg-blue-500' : ''}`}
             >
-              <div className="w-10 h-10 rounded-[24px] bg-gradient-to-br from-gray-300 to-gray-400 shrink-0" />
+              <div className="w-10 h-10 rounded-full shrink-0 overflow-hidden bg-gray-200">
+                <img src={thread.avatar} alt={thread.name} className="w-full h-full object-cover" />
+              </div>
               <div className="flex-1 min-w-0">
                 <div className="flex justify-between items-baseline mb-0.5">
                   <span className={`font-semibold truncate ${thread.id === activeThreadId ? 'text-white' : 'text-gray-800'}`}>{thread.name}</span>
@@ -214,14 +225,31 @@ export default function Messages() {
                 else roundedClassStr = 'rounded-2xl';
               }
 
-              return (
-                <div
-                  key={msg.id}
-                  className={`px-3.5 py-2 w-fit max-w-[70%] text-[15px] leading-tight shadow-sm ${roundedClassStr} ${msg.isSender ? 'bg-blue-500 text-white self-end' : 'bg-[#e9e9eb] text-black self-start'}`}
-                >
-                  {msg.text}
-                </div>
-              );
+              if (msg.isSender) {
+                return (
+                  <div
+                    key={msg.id}
+                    className={`px-3.5 py-2 w-fit max-w-[70%] text-[15px] leading-tight shadow-sm ${roundedClassStr} bg-blue-500 text-white self-end`}
+                  >
+                    {msg.text}
+                  </div>
+                );
+              } else {
+                return (
+                  <div key={msg.id} className="flex gap-2 self-start w-full max-w-[70%]">
+                    {!isNextSameSender ? (
+                      <div className="w-7 h-7 rounded-full shrink-0 self-end overflow-hidden bg-gray-200">
+                        <img src={activeThread.avatar} alt="Profile" className="w-full h-full object-cover" />
+                      </div>
+                    ) : (
+                      <div className="w-7 h-7 shrink-0" />
+                    )}
+                    <div className={`px-3.5 py-2 w-fit text-[15px] leading-tight shadow-sm ${roundedClassStr} bg-[#e9e9eb] text-black`}>
+                      {msg.text}
+                    </div>
+                  </div>
+                );
+              }
             })}
           </div>
         </div>
