@@ -17,17 +17,12 @@ export default function AgenticAI() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // For demo purposes, let's accept 'admin' or any password. 
-    // The prompt just says "must request for password".
-    if (password.length > 0) {
-      if (password === 'TZAY') {
-        setIsAuthenticated(true);
-        setError(false);
-      } else {
-        setIsAuthenticated(true); // Accept any password for demo, or we can restrict. Let's accept anything non-empty.
-      }
+    if (password === '1234') {
+      setIsAuthenticated(true);
+      setError(false);
     } else {
       setError(true);
+      setPassword('');
     }
   };
 
@@ -52,7 +47,7 @@ export default function AgenticAI() {
               className="w-full px-4 py-2 bg-black/50 border border-white/20 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
               autoFocus
             />
-            {error && <p className="text-red-400 text-xs pl-1">Password is required</p>}
+            {error && <p className="text-red-400 text-xs pl-1">Incorrect password</p>}
           </div>
 
           <button 

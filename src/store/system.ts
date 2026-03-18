@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type SystemStatus = 'booting' | 'locked' | 'desktop';
+export type SystemStatus = 'booting' | 'locked' | 'desktop' | 'sleep';
 
 export interface AppWindow {
   id: string;
