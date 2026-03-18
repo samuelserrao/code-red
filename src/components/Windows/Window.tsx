@@ -51,19 +51,19 @@ export default function Window({ app, isActive, children }: WindowProps) {
               onPointerDown={(e) => e.stopPropagation()}
             >
               <button 
-                onClick={(e) => handleTrafficLight(e, 'close')}
+                onPointerDown={(e) => handleTrafficLight(e, 'close')}
                 className="w-3 h-3 rounded-[24px] bg-[#FF5F56] border border-black/10 hover:brightness-110 flex items-center justify-center group"
               >
                 <span className="opacity-0 group-hover:opacity-100 text-black/50 text-[8px] leading-none mb-0.5">x</span>
               </button>
               <button 
-                onClick={(e) => handleTrafficLight(e, 'minimize')}
+                onPointerDown={(e) => handleTrafficLight(e, 'minimize')}
                 className="w-3 h-3 rounded-[24px] bg-[#FFBD2E] border border-black/10 hover:brightness-110 flex items-center justify-center group"
               >
                 <span className="opacity-0 group-hover:opacity-100 text-black/50 text-[8px] leading-none mb-0.5">-</span>
               </button>
               <button 
-                onClick={(e) => handleTrafficLight(e, 'maximize')}
+                onPointerDown={(e) => handleTrafficLight(e, 'maximize')}
                 className="w-3 h-3 rounded-[24px] bg-[#27C93F] border border-black/10 hover:brightness-110 flex items-center justify-center group"
               >
                 <span className="opacity-0 group-hover:opacity-100 text-black/50 text-[6px] leading-none">↗</span>
