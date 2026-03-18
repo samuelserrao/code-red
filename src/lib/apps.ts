@@ -1,13 +1,13 @@
 import { 
   FolderOpen, Compass, MessageCircle, Settings, Calculator, 
   FileText, Calendar, Image as ImageIcon, Music, Store, Terminal, 
-  Activity, Trash2, CheckSquare, Mail, Map, User, Mic, BookOpen 
+  Activity, Trash2, CheckSquare, Mail, Map, User, Mic, BookOpen, Bot
 } from 'lucide-react';
 
 export const allAppsMap = [
   { id: 'finder', name: 'Finder', icon: '/assets/macos/finder.png', color: 'text-blue-600', bg: 'transparent', core: true },
   { id: 'safari', name: 'Safari', icon: '/assets/macos/safari.png', color: 'text-blue-500', bg: 'transparent', core: true },
-  { id: 'whatsapp', name: 'WhatsApp', icon: '/assets/macos/whatsapp.png', color: 'text-green-500', bg: 'transparent', core: true },
+  { id: 'agentic-ai', name: 'Agentic AI', icon: Bot, color: 'text-blue-400', bg: 'bg-black', core: true },
   { id: 'settings', name: 'Settings', icon: '/assets/macos/settings.png', color: 'text-gray-400', bg: 'transparent', core: true },
   { id: 'calculator', name: 'Calculator', icon: '/assets/macos/calculator.png', color: 'text-orange-500', bg: 'transparent', core: false },
   { id: 'notes', name: 'Notes', icon: FileText, color: 'text-yellow-600', bg: 'bg-yellow-50', core: false },

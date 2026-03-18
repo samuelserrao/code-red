@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useDragControls } from 'framer-motion';
 import { useWindowStore, AppWindow } from '@/store/useWindowStore';
 import { ReactNode, useEffect, useState, useRef } from 'react';
 import Safari from '@/components/Apps/Safari';
+import AgenticAI from '@/components/Apps/AgenticAI';
 import WhatsApp from '@/components/Apps/WhatsApp';
 import Terminal from '@/components/Apps/Terminal';
 import Notes from '@/components/Apps/Notes';
@@ -39,6 +40,7 @@ const getAppContent = (id: string) => {
   switch (id) {
     case 'finder': return <Finder />;
     case 'safari': return <Safari />;
+    case 'agentic-ai': return <AgenticAI />;
     case 'whatsapp': return <WhatsApp />;
     case 'terminal': return <Terminal />;
     case 'notes': return <Notes />;
@@ -122,7 +124,7 @@ export default function BaseWindow({ app, isActive, children, sidebar, toolbar, 
       dragMomentum={false}
       dragElastic={0.1}
       onMouseDown={() => focusWindow(app.id)}
-      className={`absolute overflow-hidden shadow-2xl flex flex-col bg-mac-bg border border-mac-border select-none ${isActive ? 'ring-1 ring-black/10' : ''} ${app.isMaximized ? 'shadow-none !fixed !inset-0 !top-[30px] !z-50' : 'rounded-[24px]'}`}
+      className={`absolute overflow-hidden shadow-2xl flex flex-col bg-mac-bg pointer-events-auto border border-mac-border select-none ${isActive ? 'ring-1 ring-black/10' : ''} ${app.isMaximized ? 'shadow-none !fixed !inset-0 !top-[30px] !z-50' : 'rounded-[24px]'}`}
     >
       {/* Main Container - supports optional layout variations */}
         {sidebar && (
@@ -160,18 +162,20 @@ export default function BaseWindow({ app, isActive, children, sidebar, toolbar, 
 
         {/* If header is hidden, we still need traffic lights somewhere! */}
         {hideHeader && !sidebar && (
-          <div 
-            className="absolute top-0 left-0 right-0 h-12 z-50 drag-handle"
-            onPointerDown={(e) => !app.isMaximized && dragControls.start(e)}
-          >
-            <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                <TrafficLights onAction={handleTrafficLight} />
-            </div>
+          <div className="absolute top-0 left-4 h-12 flex items-center z-50">
+             <TrafficLights onAction={handleTrafficLight} />
           </div>
         )}
 
         {/* Application Specific Content */}
-        <div className={`flex-1 overflow-y-auto relative ${className}`}>
+        <div 
+          className={`flex-1 overflow-y-auto relative ${className}`}
+          onPointerDown={(e) => {
+            if (!app.isMaximized && (e.target as HTMLElement).closest('.drag-handle')) {
+              dragControls.start(e);
+            }
+          }}
+        >
           {children || getAppContent(app.id)}
         </div>
       </div>
@@ -180,26 +184,26 @@ export default function BaseWindow({ app, isActive, children, sidebar, toolbar, 
 }
 
 // Sub-component for traffic lights
-function TrafficLights({ onAction }: { onAction: (e: React.MouseEvent, action: 'close'|'minimize'|'maximize') => void }) {
+function TrafficLights({ onAction }: { onAction: (e: React.MouseEvent | React.PointerEvent, action: 'close'|'minimize'|'maximize') => void }) {
   return (
     <div 
       className="flex items-center gap-[8px] group"
       onPointerDown={(e) => e.stopPropagation()} // Click Hijack Fix
     >
       <button 
-        onClick={(e) => onAction(e, 'close')}
+        onPointerDown={(e) => onAction(e, 'close')}
         className="w-[12px] h-[12px] rounded-[24px] bg-[#FF5F56] border border-black/10 hover:brightness-110 flex items-center justify-center"
       >
         <span className="opacity-0 group-hover:opacity-100 text-black/50 text-[8px] font-bold leading-none select-none">×</span>
       </button>
       <button 
-        onClick={(e) => onAction(e, 'minimize')}
+        onPointerDown={(e) => onAction(e, 'minimize')}
         className="w-[12px] h-[12px] rounded-[24px] bg-[#FFBD2E] border border-black/10 hover:brightness-110 flex items-center justify-center"
       >
         <span className="opacity-0 group-hover:opacity-100 text-black/50 text-[8px] font-bold leading-none select-none">−</span>
       </button>
       <button 
-        onClick={(e) => onAction(e, 'maximize')}
+        onPointerDown={(e) => onAction(e, 'maximize')}
         className="w-[12px] h-[12px] rounded-[24px] bg-[#27C93F] border border-black/10 hover:brightness-110 flex items-center justify-center"
       >
         <span className="opacity-0 group-hover:opacity-100 text-black/50 text-[10px] font-bold leading-none select-none">+</span>

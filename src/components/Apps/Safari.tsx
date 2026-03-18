@@ -16,6 +16,8 @@ export default function Safari() {
   const [results, setResults] = useState<SearchResult[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState<'iframe' | 'search'>('search');
+  const [history, setHistory] = useState<string[]>(['https://www.wikipedia.org/']);
+  const [historyIndex, setHistoryIndex] = useState(0);
 
   const MOCK_RESULTS: SearchResult[] = [
     { title: 'React - A JavaScript library for building user interfaces', link: 'https://react.dev', snippet: 'React is the library for web and native user interfaces. Build user interfaces out of individual pieces called components.' },
@@ -66,7 +68,31 @@ export default function Safari() {
         }
         setUrl(finalUrl);
         setMode('iframe');
+        
+        const newHistory = [...history.slice(0, historyIndex + 1), finalUrl];
+        setHistory(newHistory);
+        setHistoryIndex(newHistory.length - 1);
       }
+    }
+  };
+
+  const handleBack = () => {
+    if (historyIndex > 0) {
+      const prevIndex = historyIndex - 1;
+      setHistoryIndex(prevIndex);
+      setUrl(history[prevIndex]);
+      setInputVal(history[prevIndex]);
+      setMode('iframe');
+    }
+  };
+
+  const handleForward = () => {
+    if (historyIndex < history.length - 1) {
+      const nextIndex = historyIndex + 1;
+      setHistoryIndex(nextIndex);
+      setUrl(history[nextIndex]);
+      setInputVal(history[nextIndex]);
+      setMode('iframe');
     }
   };
 
@@ -78,8 +104,16 @@ export default function Safari() {
         <div className="flex items-center gap-4 pl-20">
           <PanelLeft size={20} className="text-gray-500 hover:text-gray-800 cursor-pointer" />
           <div className="flex items-center gap-2 text-gray-400">
-            <ChevronLeft size={20} className="hover:text-gray-800 cursor-pointer" />
-            <ChevronRight size={20} className="hover:text-gray-800 cursor-pointer" />
+            <ChevronLeft 
+              size={20} 
+              className={`cursor-pointer ${historyIndex > 0 ? 'hover:text-gray-800 text-gray-600' : 'opacity-40 cursor-default'}`} 
+              onClick={handleBack} 
+            />
+            <ChevronRight 
+              size={20} 
+              className={`cursor-pointer ${historyIndex < history.length - 1 ? 'hover:text-gray-800 text-gray-600' : 'opacity-40 cursor-default'}`} 
+              onClick={handleForward} 
+            />
           </div>
         </div>
 
