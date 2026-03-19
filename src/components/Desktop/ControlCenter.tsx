@@ -20,10 +20,10 @@ export default function ControlCenter() {
           exit={{ opacity: 0, y: -10, scale: 0.95 }}
           transition={{ duration: 0.15, ease: 'easeOut' }}
           className="absolute top-9 right-4 w-[320px] rounded-[18px] p-2.5 flex flex-col gap-2.5 shadow-2xl z-[200] select-none"
-          style={{ 
-            backdropFilter: 'blur(40px) saturate(200%)', 
+          style={{
+            backdropFilter: 'blur(40px) saturate(200%)',
             background: 'rgba(255, 255, 255, 0.3)',
-            border: '0.5px solid rgba(255, 255, 255, 0.2)' 
+            border: '0.5px solid rgba(255, 255, 255, 0.2)'
           }}
         >
           {/* Upper Section Grid */}
@@ -68,8 +68,8 @@ export default function ControlCenter() {
                 <span className="font-semibold text-[13px]">Focus</span>
               </div>
               <div className="flex-1 bg-white/10 rounded-2xl flex flex-col items-center justify-center p-2 border border-white/5 cursor-pointer hover:bg-white/20 shadow-sm">
-                 <Sun size={14} className="text-white/80 mb-1" />
-                 <span className="text-[10px] text-white/60 font-medium text-center leading-none">Keyboard Brightness</span>
+                <Sun size={14} className="text-white/80 mb-1" />
+                <span className="text-[10px] text-white/60 font-medium text-center leading-none">Keyboard Brightness</span>
               </div>
             </div>
           </div>
@@ -81,10 +81,10 @@ export default function ControlCenter() {
                 <div className="absolute left-2 z-10 pointer-events-none">
                   <Sun size={12} className="text-black/40" />
                 </div>
-                <input 
-                  type="range" 
-                  min="0" 
-                  max="100" 
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
                   value={brightness}
                   onChange={(e) => setBrightness(parseInt(e.target.value))}
                   className="macos-slider w-full h-6 appearance-none bg-black/20 rounded-[24px] overflow-hidden cursor-pointer"
@@ -100,10 +100,10 @@ export default function ControlCenter() {
                 <div className="absolute left-2 z-10 pointer-events-none">
                   <Volume2 size={12} className="text-black/40" />
                 </div>
-                <input 
-                  type="range" 
-                  min="0" 
-                  max="100" 
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
                   value={sound}
                   onChange={(e) => setSound(parseInt(e.target.value))}
                   className="macos-slider w-full h-6 appearance-none bg-black/20 rounded-[24px] overflow-hidden cursor-pointer"

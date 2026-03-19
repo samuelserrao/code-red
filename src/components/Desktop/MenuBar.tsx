@@ -20,7 +20,7 @@ export default function MenuBar() {
 
   useEffect(() => {
     setMounted(true);
-    
+
     const handleClickOutside = () => {
       setActiveMenu(null);
     };
@@ -131,18 +131,18 @@ export default function MenuBar() {
   };
 
   return (
-    <div 
+    <div
       className="w-full h-7 flex items-center justify-between px-3 text-[13px] font-medium text-white shadow-sm z-[100] select-none"
-      style={{ 
-        backdropFilter: 'blur(40px) saturate(210%) brightness(1.1)', 
+      style={{
+        backdropFilter: 'blur(40px) saturate(210%) brightness(1.1)',
         background: 'rgba(255, 255, 255, 0.3)',
-        borderBottom: '0.5px solid rgba(255, 255, 255, 0.2)' 
+        borderBottom: '0.5px solid rgba(255, 255, 255, 0.2)'
       }}
     >
       {/* Left items */}
       <div className="flex items-center space-x-0 h-full">
         {/* Apple Logo Menu */}
-        <div 
+        <div
           className={`flex items-center justify-center h-full px-3 hover:bg-white/20 cursor-pointer transition-colors relative ${activeMenu === 'Apple' ? 'bg-white/20' : ''}`}
           onClick={(e) => {
             e.stopPropagation();
@@ -156,10 +156,10 @@ export default function MenuBar() {
             {activeMenu === 'Apple' && <MenuDropdown items={menus['Apple']} dark />}
           </AnimatePresence>
         </div>
-        
+
         <div className="flex items-center h-full">
           {/* Active App Menu */}
-          <div 
+          <div
             className={`font-bold px-3 py-1 hover:bg-white/20 rounded-md cursor-pointer transition-colors whitespace-nowrap capitalize relative flex items-center h-full ${activeMenu === appMenuName ? 'bg-white/20' : ''}`}
             onClick={(e) => {
               e.stopPropagation();
@@ -173,11 +173,11 @@ export default function MenuBar() {
               )}
             </AnimatePresence>
           </div>
-          
+
           <div className="hidden sm:flex items-center h-full ml-1">
             {currentMenuItems.map((item) => (
-              <div 
-                key={item} 
+              <div
+                key={item}
                 className={`px-3 py-1 hover:bg-white/20 rounded-md cursor-pointer transition-colors whitespace-nowrap relative h-full flex items-center ${activeMenu === item ? 'bg-white/20' : ''}`}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -205,7 +205,7 @@ export default function MenuBar() {
         <div className="flex items-center px-1.5 py-1 rounded hover:bg-white/20 cursor-pointer transition-colors">
           <Search size={15} strokeWidth={2.5} />
         </div>
-        <div 
+        <div
           className={`flex items-center px-1.5 py-1 rounded cursor-pointer transition-colors ${isControlCenterOpen ? 'bg-white/20' : 'hover:bg-white/20'}`}
           onClick={(e) => { e.stopPropagation(); toggleControlCenter(); }}
         >
@@ -227,7 +227,7 @@ export default function MenuBar() {
 function MenuDropdown({ items, dark }: { items?: { label?: string, shortcut?: string, isDivider?: boolean }[], dark?: boolean }) {
   if (!items || items.length === 0) return null;
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 5, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 5, scale: 0.98 }}

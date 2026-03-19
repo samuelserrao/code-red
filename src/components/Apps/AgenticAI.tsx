@@ -10,14 +10,28 @@ export default function AgenticAI() {
 
   // Mock access time data
   const accessRecords = [
-    { id: 1, login: '2026-03-18 10:23', logout: '2026-03-18 11:45', attempt: 'Success' },
-    { id: 2, login: '2026-03-18 12:05', logout: '-', attempt: 'Failed' },
-    { id: 3, login: '2026-03-18 14:10', logout: '2026-03-18 15:00', attempt: 'Success' },
+    { id: 1, login: '2026-03-02 10:20', logout: '2026-03-02 23:45', attempt: 'Success' },
+    { id: 1, login: '2026-03-05 10:00', logout: '2026-03-05 20:30', attempt: 'Success' },
+    { id: 1, login: '2026-03-06 10:00', logout: '2026-03-06 20:45', attempt: 'Success' },
+    { id: 1, login: '2026-03-09 10:23', logout: '2026-03-09 16:45', attempt: 'Success' },
+    { id: 1, login: '2026-03-12 11:30', logout: '2026-03-12 20:00', attempt: 'Success' },
+    { id: 1, login: '2026-03-18 10:30', logout: '2026-03-18 16:40', attempt: 'Success' },
+    { id: 1, login: '2026-03-20 10:23', logout: '2026-03-20 16:30', attempt: 'Success' },
+    { id: 1, login: '2026-03-21 10:00', logout: '2026-03-21 16:30', attempt: 'Success' },
+    { id: 1, login: '2026-03-22 09:00', logout: '2026-03-22 16:30', attempt: 'Success' },
+    { id: 1, login: '2026-03-23 09:00', logout: '2026-03-23 23:58', attempt: 'Success' },
+    { id: 1, login: '2026-03-24 10:00', logout: '2026-03-24 11:30', attempt: 'Success' },
+    { id: 2, login: '2026-03-24 11:50', logout: '2026-03-24 12:15', attempt: 'Success' },
+    { id: 3, login: '2026-03-24 12:30', logout: '-', attempt: 'Failed' },
+    { id: 3, login: '2026-03-24 12:35', logout: '-', attempt: 'Failed' },
+    { id: 3, login: '2026-03-24 12:45', logout: '-', attempt: 'Failed' },
+    { id: 3, login: '2026-03-24 12:50', logout: '-', attempt: 'Failed' },
+    { id: 3, login: '2026-03-24 13:00', logout: '2026-03-24 14:00', attempt: 'Success' },
   ];
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === '1234') {
+    if (password === 'TZAY') {
       setIsAuthenticated(true);
       setError(false);
     } else {
@@ -34,11 +48,11 @@ export default function AgenticAI() {
             <Lock className="text-blue-400 w-8 h-8" />
           </div>
           <h2 className="text-xl font-semibold mb-2 tracking-tight">Agentic AI Login</h2>
-          
+
           <div className="w-full flex flex-col gap-2">
-            <input 
-              type="password" 
-              placeholder="Enter Password" 
+            <input
+              type="password"
+              placeholder="Enter Password"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -50,7 +64,7 @@ export default function AgenticAI() {
             {error && <p className="text-red-400 text-xs pl-1">Incorrect password</p>}
           </div>
 
-          <button 
+          <button
             type="submit"
             className="w-full mt-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-colors"
           >
@@ -77,7 +91,7 @@ export default function AgenticAI() {
           </h2>
           <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-6 flex items-center justify-center min-h-[120px]">
             <p className="text-red-400 font-medium text-lg tracking-wide uppercase text-center">
-              Secured<br/>Cant be acced without authors permition
+              Secured<br />Cant be acced without authors permition
             </p>
           </div>
         </section>
@@ -98,16 +112,15 @@ export default function AgenticAI() {
                 </tr>
               </thead>
               <tbody className="text-sm divide-y divide-white/5">
-                {accessRecords.map((record) => (
-                  <tr key={record.id} className="hover:bg-white/5 transition-colors">
+                {accessRecords.map((record, index) => (
+                  <tr key={index} className="hover:bg-white/5 transition-colors">
                     <td className="px-6 py-4">{record.login}</td>
                     <td className="px-6 py-4">{record.logout}</td>
                     <td className="px-6 py-4">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${
-                        record.attempt === 'Success' 
-                          ? 'bg-green-500/20 text-green-400' 
-                          : 'bg-red-500/20 text-red-400'
-                      }`}>
+                      <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${record.attempt === 'Success'
+                        ? 'bg-green-500/20 text-green-400'
+                        : 'bg-red-500/20 text-red-400'
+                        }`}>
                         {record.attempt}
                       </span>
                     </td>

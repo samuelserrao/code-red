@@ -13,7 +13,7 @@ export default function LockScreen() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === '1234') {
+    if (password === 'RAILAB31') {
       setStatus('desktop');
     } else {
       setIsShaking(true);
@@ -23,7 +23,7 @@ export default function LockScreen() {
   };
 
   return (
-    <div 
+    <div
       className="w-screen h-screen flex flex-col items-center justify-center bg-cover bg-center relative"
       style={{ backgroundImage: 'url(/wallpapers/sequoia-light.jpg)' }}
     >
@@ -39,7 +39,7 @@ export default function LockScreen() {
           className="rounded-[24px] shadow-2xl border-2 border-white/20 object-cover"
           priority
         />
-        <h1 className="text-white text-3xl font-medium tracking-tight shadow-sm">Samuel</h1>
+        <h1 className="text-white text-3xl font-medium tracking-tight shadow-sm">Vikram</h1>
 
         <motion.form
           onSubmit={handleSubmit}
@@ -56,7 +56,7 @@ export default function LockScreen() {
             autoFocus
           />
           {password.length > 0 && (
-            <button 
+            <button
               type="submit"
               className="absolute right-1.5 top-1/2 -translate-y-1/2 p-0.5 rounded-[24px] bg-white/20 hover:bg-white/40 text-white transition-colors"
             >
@@ -86,7 +86,7 @@ export default function LockScreen() {
           <span className="text-xs font-medium">Restart</span>
         </div>
         <div className="flex flex-col items-center gap-2 cursor-pointer hover:text-white transition-colors"
-             onClick={() => setStatus('booting')}>
+          onClick={() => setStatus('booting')}>
           <div className="w-10 h-10 rounded-[24px] bg-black/20 backdrop-blur-md flex items-center justify-center border border-white/10 shadow-lg">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

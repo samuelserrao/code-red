@@ -7,10 +7,10 @@ import {
 export const allAppsMap = [
   { id: 'finder', name: 'Finder', icon: '/assets/macos/finder.png', color: 'text-blue-600', bg: 'transparent', core: true },
   { id: 'safari', name: 'Safari', icon: '/assets/macos/safari.png', color: 'text-blue-500', bg: 'transparent', core: true },
-  { id: 'agentic-ai', name: 'Agentic AI', icon: Bot, color: 'text-blue-400', bg: 'bg-black', core: true },
+  { id: 'agentic-ai', name: 'Agentic AI', icon: '/assets/macos/agentic-ai.svg', color: 'text-transparent', bg: 'transparent', core: true },
   { id: 'settings', name: 'Settings', icon: '/assets/macos/settings.png', color: 'text-gray-400', bg: 'transparent', core: true },
   { id: 'calculator', name: 'Calculator', icon: '/assets/macos/calculator.png', color: 'text-orange-500', bg: 'transparent', core: false },
-  { id: 'notes', name: 'Notes', icon: FileText, color: 'text-yellow-600', bg: 'bg-yellow-50', core: false },
+  { id: 'notes', name: 'Notes', icon: '/assets/macos/notes.svg', color: 'text-transparent', bg: 'transparent', core: false },
   { id: 'calendar', name: 'Calendar', icon: '/assets/macos/calendar.png', color: 'text-red-500', bg: 'transparent', core: false },
   { id: 'photos', name: 'Photos', icon: '/assets/macos/photos.png', color: 'text-blue-400', bg: 'transparent', core: false },
   { id: 'music', name: 'Music', icon: '/assets/macos/music.png', color: 'text-rose-500', bg: 'transparent', core: true },
