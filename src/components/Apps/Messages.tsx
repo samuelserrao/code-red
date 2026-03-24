@@ -26,7 +26,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'You chill. Not everything',
     time: '24 March',
     unread: true,
-    avatar: 'https://i.pravatar.cc/150?u=Sachin',
+    avatar: '/photos/sachin.jpeg',
     messages: [
       { id: 1, text: "That meeting was wild ngl. Didn't expect them to go at you like that.", isSender: false },
       { id: 2, text: 'Yeah', isSender: true },
@@ -47,7 +47,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: "As if i'm dying to talk to youh",
     time: '24 March',
     unread: false,
-    avatar: 'https://i.pravatar.cc/150?u=Chaitesh',
+    avatar: '/photos/chaithesh.jpeg',
     messages: [
       { id: 1, text: "Hey, about today's meeting", isSender: false },
       { id: 2, text: "What now", isSender: true },
@@ -87,7 +87,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: "Yeah.. maybe I should've",
     time: '24 March',
     unread: false,
-    avatar: 'https://i.pravatar.cc/150?u=Nisarga',
+    avatar: '/photos/Nisarga.jpeg',
     messages: [
       { id: 1, text: "Hey… about what happened in the meeting today", isSender: false },
       { id: 2, text: "What now?", isSender: true },
@@ -108,11 +108,11 @@ const INITIAL_THREADS: Thread[] = [
   },
   {
     id: 3,
-    name: 'Aashritha',
+    name: 'Divya',
     preview: "I'm just trying to help u unlike",
     time: '24 March',
     unread: false,
-    avatar: 'https://i.pravatar.cc/150?u=Aashritha2',
+    avatar: '/photos/Divya.jpeg',
     messages: [
       { id: 1, text: 'Hey u fine🙂', isSender: false },
       { id: 2, text: 'That meeting was messy today', isSender: false },
@@ -170,7 +170,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: '😭😭😭',
     time: '21 March',
     unread: false,
-    avatar: 'https://i.pravatar.cc/150?u=Moksha3',
+    avatar: '/photos/Moksha.jpeg',
     messages: [
       { id: 1, text: 'hii my love', isSender: true },
       { id: 2, text: 'Should i come to your place at 3:00pm?', isSender: true },
@@ -198,7 +198,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'Good Night😘💋',
     time: '20 March',
     unread: false,
-    avatar: 'https://i.pravatar.cc/150?u=Hazil',
+    avatar: '/photos/Hazil.jpeg',
     messages: [
       { id: 1, text: 'Great presentation today. You always know how to impress a room', isSender: false },
       { id: 2, text: 'Coming from you, that means a lot :)', isSender: true },
@@ -277,7 +277,7 @@ const INITIAL_THREADS: Thread[] = [
       { id: 75, text: "...A little", isSender: false },
       { id: 76, text: "She looks at you like she owns you", isSender: false },
       { id: 77, text: "And you?", isSender: true },
-      { id: 78, text: "I just don't like sharing", isSender: false},
+      { id: 78, text: "I just don't like sharing", isSender: false },
       { id: 79, text: "Yeah.. you really don't", isSender: true },
       { id: 80, text: "Anyways... get some sleep. I'll see you tomorrow...", isSender: true },
       { id: 81, text: "try not to miss me to much.😘", isSender: true },
@@ -291,7 +291,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'Yes, certain substances can',
     time: '10 March',
     unread: false,
-    avatar: 'https://i.pravatar.cc/150?u=Doctor4',
+    avatar: '/photos/raqueeba.jpeg',
     messages: [
       { id: 1, text: "Hey doc, I've been getting that chest tightness again lately.", isSender: true },
       { id: 2, text: "Is it during exertion or even at rest?", isSender: false },

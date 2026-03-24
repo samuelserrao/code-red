@@ -32,7 +32,7 @@ export default function LockScreen() {
 
       <div className="z-10 flex flex-col items-center gap-6 mt-20">
         <Image
-          src="/profile.jpg"
+          src="/sai.jpeg"
           alt="Profile"
           width={150}
           height={150}
