@@ -138,7 +138,7 @@ const INITIAL_THREADS: Thread[] = [
     preview: 'They got quiet when I walked in',
     time: '23 March',
     unread: false,
-    avatar: 'https://i.pravatar.cc/150?u=Surakshith',
+    avatar: '/photos/Surakshith.jpeg',
     messages: [
       { id: 1, text: "Hey", isSender: false },
       { id: 2, text: "Yeah", isSender: true },
